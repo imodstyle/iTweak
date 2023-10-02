@@ -3,6 +3,8 @@
 # Author: @imodstyle based of KTweak by tytydraco
 # ×××××××××××××××××××××××××× #
 
+sleep 30
+
 # Limit max perf event processing time to this much CPU usage
 #echo 5 > /proc/sys/kernel/perf_cpu_time_max_percent
 
@@ -28,7 +30,7 @@
 #echo 32 > /proc/sys/kernel/sched_nr_migrate
 
 # Disable scheduler statistics to reduce overhead
-echo 0 /proc/sys/kernel/sched_schedstats
+echo 0 > /proc/sys/kernel/sched_schedstats
 
 # Disable unnecessary printk logging
 echo off > /proc/sys/kernel/printk_devkmsg
