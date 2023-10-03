@@ -80,8 +80,8 @@ do
 	#	fi
 	#done
 
-	# Change TCP Congest to BBR
-	echo bbr > /proc/sys/net/ipv4/tcp_congestion_control
+	# Change sched to ssg
+	echo ssg > "$queue/scheduler"
 
 	# Do not use I/O as a source of randomness
 	echo 0 > "$queue/add_random"
