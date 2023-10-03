@@ -70,15 +70,18 @@ echo 3 > /proc/sys/net/ipv4/tcp_fastopen
 for queue in /sys/block/*/queue
 do
 	# Choose the first governor available
-	avail_scheds="$(cat "$queue/scheduler")"
-	for sched in ssg none bfq kyber mq-deadline
-	do
-		if [[ "$avail_scheds" == *"$sched"* ]]
-		then
-			echo "$sched" > "$queue/scheduler"
-			break
-		fi
-	done
+	#avail_scheds="$(cat "$queue/scheduler")"
+	#for sched in ssg none bfq kyber mq-deadline
+	#do
+	#	if [[ "$avail_scheds" == *"$sched"* ]]
+	#	then
+	#		echo "$sched" > "$queue/scheduler"
+	#		break
+	#	fi
+	#done
+
+	# Change TCP Congest to BBR
+	echo bbr > /proc/sys/net/ipv4/tcp_congestion_control
 
 	# Do not use I/O as a source of randomness
 	echo 0 > "$queue/add_random"
@@ -95,12 +98,13 @@ done
 
 # Change TCP Congest to BBR if avail
 # Choose the first tcp congest available
-avail_tcp="$(cat /proc/sys/net/ipv4/tcp_available_congestion_control)"
-for congest in bbr westwood cubic
-do
-	if [[ "$avail_tcp" == *"$congest"* ]]
-	then
-		echo "$congest" > /proc/sys/net/ipv4/tcp_congestion_control
-		break
-	fi
-done
+#avail_tcp="$(cat /proc/sys/net/ipv4/tcp_available_congestion_control)"
+#for congest in bbr westwood cubic
+#do
+#	if [[ "$avail_tcp" == *"$congest"* ]]
+#	then
+#		echo "$congest" > /proc/sys/net/ipv4/tcp_congestion_control
+#		break
+#	fi
+#done
+echo bbr > /proc/sys/net/ipv4/tcp_congestion_control
