@@ -13,8 +13,6 @@ unzip -o "$ZIPFILE" module.prop -d $MODPATH >&2
 MOD_PRINT() {
 ui_print " --- Additional Notes ---"
 ui_print ""
-ui_print " * Reinstall to update the script"
-ui_print " * Rebooting is not required"
 ui_print " * Do not use with other optimizer modules"
 }
 set -x
