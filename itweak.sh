@@ -1,7 +1,7 @@
 #!/system/bin/sh
 # Fine tune kernel parameter
 # Author: @imodstyle based of KTweak by tytydraco
-# Profile: Throughput
+# Profile: Balance
 # ×××××××××××××××××××××××××× #
 
 sleep 30
