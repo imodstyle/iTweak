@@ -1,6 +1,7 @@
 #!/system/bin/sh
 # Fine tune kernel parameter
 # Author: @imodstyle based of KTweak by tytydraco
+# Profile: Basic
 # ×××××××××××××××××××××××××× #
 
 sleep 30
@@ -65,6 +66,9 @@ echo 1 > /proc/sys/net/ipv4/tcp_ecn
 
 # Enable fast socket open for receiver and sender
 echo 3 > /proc/sys/net/ipv4/tcp_fastopen
+
+# Enable power efficient workqueue
+#echo Y > /sys/module/workqueue/parameters/power_efficient
 
 # Change IO Sched to SSG and fine tune
 for queue in /sys/block/*/queue
